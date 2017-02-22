@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
         webSettings.setJavaScriptEnabled(true);
 
         // LoadUrl
-        mWebView.loadUrl("http://beta.html5test.com/");
+        mWebView.loadUrl("file:///android_asset/www/Particle.html");
     }
 
     @Override
