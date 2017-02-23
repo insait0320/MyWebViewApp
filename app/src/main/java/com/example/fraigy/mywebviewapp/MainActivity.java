@@ -2,6 +2,7 @@ package com.example.fraigy.mywebviewapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -11,9 +12,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Remove title-bar and state-bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
-        // Alloc WebView
+        // Find WebView
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
 
         // Enable Javascript
