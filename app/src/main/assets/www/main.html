@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
+        <meta charset="utf-8">
 
+        <style type="text/css">
+            body{
+                margin:0;
+                padding:0;
+                width:inherit;
+                height:inherit;
+
+                }
+            #header{
+                margin:0;
+                padding:0;
+                width:inherit;
+                height:70px;
+                background-color:red;
+                border-top:0;
+                border-bottom:1px solid black;
+                border-right:0;
+                border-left:0;
+                }
+            #nav{
+                margin:0;
+                padding:0;
+                width:inherit;
+                height:30px;
+                background-color:green;
+                border-top:0;
+                border-bottom:1px solid black;
+                border-right:0;
+                border-left:0;
+                }
+            #map{
+                margin:0;
+                padding:0;
+                width:inherit;
+                height:250px;
+                background-color:;
+                border-top:0;
+                border-bottom:1px solid black;
+                border-right:0;
+                border-left:0;
+                }
+            #footer{
+                margin:0;
+                padding:0;
+                width:inherit;
+                height:60px;
+                background-color:yellow;
+                border-top:0;
+                border-bottom:1px solid black;
+                border-right:0;
+                border-left:0;
+                }
+        </style>
     </head>
 
     <body>
+        <div>
+        <div id="header"></div>
+        <div id="nav"></div>
+        <div id="map"></div>
+        <div id="footer"></div>
+            <button onclick="showLocation()">try it</button>
+        </div>
+
+
+
+
+        <script>
+            var x = document.getElementById("footer");
+
+            getLocation();
+
+            function getLocation(){
+                navigator.geolocation.getCurrentPosition(myMap);
+                }
+
+            function showLocation() {
+                if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+                }
+
+            function showPosition(position){
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+                }
+
+            function myMap(position){
+                var la = position.coords.latitude;
+                var lo = position.coords.longitude;
+
+                var mapProp={
+                    center:{lat:11,lng:11},
+                    zoom:14,
+
+                    };
+            var map=new google.maps.Map(document.getElementById("map"),mapProp);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsgwF3tD3ioLi4qcHvgSUpPIIa71effV8&callback=myMap"></script>
+
 
     </body>
-
 </html>
